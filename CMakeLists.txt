@@ -4,8 +4,8 @@ set(PROJECT_NAME Explorer)
 project(${PROJECT_NAME})
 
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(PROJECT_SOURCES ${SRC_DIR}/main.cpp)
 
+add_subdirectory(${SRC_DIR})
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 
 set(LIBS ${CMAKE_CURRENT_SOURCE_DIR}/libs)
@@ -32,12 +32,10 @@ target_link_libraries(${PROJECT_NAME} "glad" ${CMAKE_DL_LIBS})
 
 #GLM
 set(GLM_DIR ${LIBS}/glm)
-
 target_include_directories(${PROJECT_NAME} PRIVATE ${GLM_DIR})
 
 #SOIL
 set(SOIL_DIR ${LIBS}/Simple-OpenGL-Image-Library)
-
 target_include_directories(${PROJECT_NAME} PRIVATE ${SOIL_DIR}/src)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})

@@ -1,0 +1,9 @@
+set(
+	PROJECT_SOURCES 
+		${SRC_DIR}/engine/Game.h
+		${SRC_DIR}/engine/Game.cpp
+		${SRC_DIR}/game/Explorer.h
+		${SRC_DIR}/game/Explorer.cpp
+		${SRC_DIR}/Main.cpp
+	PARENT_SCOPE
+)
