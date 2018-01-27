@@ -19,12 +19,26 @@ set(GLFW_INSTALL OFF CACHE INTERNAL "Generate installation target")
 
 add_subdirectory(${GLFW_DIR})
 
-#GLEW
-set(GLEW_DIR ${LIBS}/glew)
-add_subdirectory(${GLEW_DIR})
-
 target_link_libraries(${PROJECT_NAME} "glfw" ${GLFW_LIBRARIES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${GLFW_DIR}/include)
+
+#GLAD
+set(GLAD_DIR ${LIBS}/glad)
+add_library("glad" ${GLAD_DIR}/src/glad.c)
+
+target_include_directories("glad" PRIVATE ${GLAD_DIR}/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${GLAD_DIR}/include)
+target_link_libraries(${PROJECT_NAME} "glad" ${CMAKE_DL_LIBS})
+
+#GLM
+set(GLM_DIR ${LIBS}/glm)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${GLM_DIR})
+
+#SOIL
+set(SOIL_DIR ${LIBS}/Simple-OpenGL-Image-Library)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOIL_DIR}/src)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
