@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/c++,visualstudio
 
+### Project ###
+build/
+
 ### C++ ###
 # Prerequisites
 *.d
