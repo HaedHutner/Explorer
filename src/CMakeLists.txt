@@ -2,8 +2,15 @@ set(
 	PROJECT_SOURCES 
 		${SRC_DIR}/engine/Game.h
 		${SRC_DIR}/engine/Game.cpp
+		${SRC_DIR}/engine/render/Mesh.h
+		${SRC_DIR}/engine/render/Mesh.cpp
+		${SRC_DIR}/engine/render/ShaderProgram.h
+		${SRC_DIR}/engine/render/ShaderProgram.cpp
+		${SRC_DIR}/engine/render/Vertex.h
 		${SRC_DIR}/game/Explorer.h
 		${SRC_DIR}/game/Explorer.cpp
+		${SRC_DIR}/util/Log.h
+		${SRC_DIR}/util/FileUtils.hpp
 		${SRC_DIR}/Main.cpp
 	PARENT_SCOPE
 )

@@ -7,9 +7,11 @@ Game::Game(const char* name, const int width, const int height)
 
 bool Game::init()
 {
+	Log::info("Starting...");
+
 	int glfwInitRes = glfwInit();
 	if (!glfwInitRes) {
-		fprintf(stderr, "Unable to initialize GLFW\n");
+		Log::error("Unable to initialize GLFW");
 		return false;
 	}
 
@@ -20,7 +22,7 @@ bool Game::init()
 
 	context = glfwCreateWindow(width, height, name, nullptr, nullptr);
 	if (!context) {
-		fprintf(stderr, "Unable to create GLFW window\n");
+		Log::error("Unable to create GLFW window");
 
 		glfwTerminate();
 
@@ -31,7 +33,7 @@ bool Game::init()
 
 	int gladInitRes = gladLoadGL();
 	if (!gladInitRes) {
-		fprintf(stderr, "Unable to initialize glad\n");
+		Log::error("Unable to init GLAD");
 
 		glfwDestroyWindow(context);
 		glfwTerminate();
@@ -75,5 +77,5 @@ int Game::stop()
 
 void Game::glfwErrorCallback(int error, const char * description)
 {
-	fprintf(stderr, "GLFW error %d: %s\n", error, description);
+	Log::error("GLFW Error %d: %s\n", error, description);
 }
