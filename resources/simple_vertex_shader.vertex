@@ -1,0 +1,9 @@
+#version 330
+
+in vec3 position;
+in vec2 uv;
+in vec3 normal;
+
+void main() {
+	gl_Position = vec4( position, 0 );
+}
