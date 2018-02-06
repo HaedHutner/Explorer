@@ -36,9 +36,13 @@ target_link_libraries(${PROJECT_NAME} "glad" ${CMAKE_DL_LIBS})
 set(GLM_DIR ${LIBS}/glm)
 target_include_directories(${PROJECT_NAME} PRIVATE ${GLM_DIR})
 
-#SOIL
-set(SOIL_DIR ${LIBS}/Simple-OpenGL-Image-Library)
-target_include_directories(${PROJECT_NAME} PRIVATE ${SOIL_DIR}/src)
+#STB
+set(STB_DIR ${LIBS}/stb-cmake)
+target_include_directories(${PROJECT_NAME} PRIVATE ${STB_DIR})
+
+#FastNoiseSIMD
+#set(FAST_NOISE_SIMD_DIR ${LIBS}/FastNoiseSIMD)
+#target_include_directories(${PROJECT_NAME} PRIVATE ${FAST_NOISE_SIMD_DIR})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)

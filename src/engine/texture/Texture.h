@@ -2,6 +2,7 @@
 #define _TEXTURE_H
 
 #include <glad\glad.h>
+#include <stb_image.h>
 
 class Texture {
 protected:

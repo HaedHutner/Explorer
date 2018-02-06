@@ -1,9 +1,6 @@
 #ifndef _TEXTURE_ARRAY_H
 #define _TEXTURE_ARRAY_H
 
-#include <glad\glad.h>
-#include <SOIL.h>
-
 #include <engine\texture\Texture.h>
 
 #include <string>

@@ -9,11 +9,11 @@ Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& eleme
 
 	glBindVertexArray(vao);
 
-	GLuint vbo_size = vertices.size() * sizeof(Vertex);
+	size_t vbo_size = vertices.size() * sizeof(Vertex);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, vbo_size, &vertices[0], GL_STATIC_DRAW);
 
-	GLuint ebo_size = elements.size() * sizeof(GLuint);
+	size_t ebo_size = elements.size() * sizeof(GLuint);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, ebo_size, &elements[0], GL_STATIC_DRAW);
 

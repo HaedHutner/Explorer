@@ -14,9 +14,10 @@ SimpleTexture::SimpleTexture(const char * path)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	unsigned char* image = SOIL_load_image(path, &this->w, &this->h, 0, SOIL_LOAD_RGB);
+	int channels = 0;
+	unsigned char* image = stbi_load(path, &this->w, &this->h, &channels, 0);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->w, this->h, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	SOIL_free_image_data(image);
+	stbi_image_free(image);
 
 }
 

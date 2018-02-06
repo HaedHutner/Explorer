@@ -1,7 +1,7 @@
 #ifndef _FILE_UTILS_H
 #define _FILE_UTILS_H
 
-#include <SOIL.h>
+#include <stb_image.h>
 
 #include <string>
 #include <fstream>
@@ -27,16 +27,17 @@ namespace FileUtils {
 		unsigned int textureID;
 		glGenTextures(1, &textureID);
 
-		int width, height, nrComponents;
-		unsigned char *data = SOIL_load_image(filename.c_str(), &width, &height, &nrComponents, 0);
+		int width, height, channels;
+		unsigned char *data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
+
 		if (data)
 		{
 			GLenum format;
-			if (nrComponents == 1)
+			if (channels == 1)
 				format = GL_RED;
-			else if (nrComponents == 3)
+			else if (channels == 3)
 				format = GL_RGB;
-			else if (nrComponents == 4)
+			else if (channels == 4)
 				format = GL_RGBA;
 
 			glBindTexture(GL_TEXTURE_2D, textureID);
@@ -48,12 +49,12 @@ namespace FileUtils {
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-			SOIL_free_image_data(data);
+			stbi_image_free(data);
 		}
 		else
 		{
 			Log::error("Failed to load texture at path %s", path);
-			SOIL_free_image_data(data);
+			stbi_image_free(data);
 		}
 
 		return textureID;

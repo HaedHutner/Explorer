@@ -4,6 +4,9 @@
 [submodule "libs/glm"]
 	path = libs/glm
 	url = https://github.com/g-truc/glm.git
-[submodule "libs/Simple-OpenGL-Image-Library"]
-	path = libs/Simple-OpenGL-Image-Library
-	url = https://github.com/kbranigan/Simple-OpenGL-Image-Library.git
+[submodule "libs/FastNoiseSIMD"]
+	path = libs/FastNoiseSIMD
+	url = https://github.com/Auburns/FastNoiseSIMD.git
+[submodule "libs/stb-cmake"]
+	path = libs/stb-cmake
+	url = https://github.com/jschmidt42/stb-cmake.git
