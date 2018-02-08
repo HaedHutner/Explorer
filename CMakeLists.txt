@@ -38,7 +38,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${GLM_DIR})
 
 #STB
 set(STB_DIR ${LIBS}/stb-cmake)
+add_subdirectory(${STB_DIR})
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${STB_DIR})
+target_link_libraries(${PROJECT_NAME} "stb" ${CMAKE_DL_LIBS})
 
 #FastNoiseSIMD
 #set(FAST_NOISE_SIMD_DIR ${LIBS}/FastNoiseSIMD)

@@ -2,6 +2,10 @@ set(
 	PROJECT_SOURCES 
 		${SRC_DIR}/engine/Game.h
 		${SRC_DIR}/engine/Game.cpp
+		${SRC_DIR}/engine/Engine.h
+		${SRC_DIR}/engine/render/AbstractRenderer.h
+		${SRC_DIR}/engine/render/SimpleRenderer.h
+		${SRC_DIR}/engine/render/SimpleRenderer.cpp
 		${SRC_DIR}/engine/render/Camera.h
 		${SRC_DIR}/engine/render/Camera.cpp
 		${SRC_DIR}/engine/render/Mesh.h

@@ -6,13 +6,23 @@
 class Explorer : public Game {
 private:
 
-	void tick();
+	Camera * camera;
 
-	void render();
+	ShaderProgram test_shader;
+	Model* test;
+	SimpleRenderer* test_renderer;
+
+	void tick() override;
+
+	void render() override;
 
 public:
 
 	Explorer( const int width, const int height );
+
+	void run() override;
+
+	~Explorer();
 
 };
 

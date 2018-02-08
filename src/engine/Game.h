@@ -1,7 +1,7 @@
 #ifndef _GAME_H
 #define _GAME_H
 
-#include <glad\glad.h>
+#include <engine\Engine.h>
 #include <GLFW\glfw3.h>
 
 #include <util\Log.h>
@@ -29,9 +29,9 @@ public:
 
 	bool init();
 
-	void run();
+	virtual void run();
 
-	int stop();
+	virtual int stop();
 
 };
 

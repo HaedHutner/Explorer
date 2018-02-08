@@ -10,12 +10,24 @@ Model::Model(const Mesh & mesh, const Texture & texture)
 {
 }
 
-void Model::moveBy(const glm::vec3 & difference)
+glm::mat4 Model::get_model_matrix()
 {
+	return model;
 }
 
-void Model::rotateBy(const glm::vec3 & difference)
+void Model::moveBy(const glm::vec3 & difference)
 {
+	glm::translate(model, difference);
+}
+
+void Model::rotateBy(const float& amount, const glm::vec3& direction)
+{
+	glm::rotate(model, amount, direction);
+}
+
+void Model::scaleBy(const glm::vec3 & difference)
+{
+	glm::scale(model, difference);
 }
 
 void Model::tick()
