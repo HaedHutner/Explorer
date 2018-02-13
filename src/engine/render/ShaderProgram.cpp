@@ -1,7 +1,13 @@
 #include "ShaderProgram.h"
 
-inline GLuint ShaderProgram::create_shader(const std::string& source, GLenum type) {
+ShaderProgram::ShaderProgram()
+{
+}
+
+GLuint ShaderProgram::create_shader(const std::string source, GLenum type) {
+	
 	GLint _shader = glCreateShader(type);
+
 	const GLchar* c_source = source.c_str();
 	glShaderSource(_shader, 1, &c_source, NULL);
 	glCompileShader(_shader);

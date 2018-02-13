@@ -13,6 +13,10 @@ private:
 
 	glm::mat4 model;
 
+	glm::vec3 position;
+	glm::fvec3 rotation;
+	glm::vec3 scale;
+
 	Mesh mesh;
 	Texture texture;
 
@@ -20,11 +24,13 @@ public:
 
 	Model();
 
-	Model(const Mesh& mesh, const Texture& texture);
+	Model(const Mesh& mesh, const Texture& texture, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale );
 
 	glm::mat4 get_model_matrix();
 
 	void moveBy(const glm::vec3& difference);
+
+	void rotateBy(const glm::fvec3& rotation);
 
 	void rotateBy(const float& amount, const glm::vec3& direction);
 

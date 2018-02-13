@@ -9,15 +9,15 @@
 class Game {
 private:
 
-	const char* name;
-	int width;
-	int height;
-
 	static void glfwErrorCallback(int error, const char* description);
 
 protected:
 
 	GLFWwindow * context;
+
+	const char* name;
+	int width;
+	int height;
 
 	Game(const char* name, int width, int height);
 

@@ -9,8 +9,8 @@ private:
 	Camera * camera;
 
 	ShaderProgram test_shader;
-	Model* test;
-	SimpleRenderer* test_renderer;
+	Model* test = nullptr;
+	SimpleRenderer* test_renderer = nullptr;
 
 	void tick() override;
 

@@ -17,11 +17,13 @@ private:
 	GLuint vertex_shader;
 	GLuint fragment_shader;
 
-	inline static GLuint create_shader(const std::string& source, GLenum type);
+	static GLuint create_shader(const std::string source, GLenum type);
 
 	ShaderProgram(const std::string& vertexSrc, const std::string& fragmentSrc);
 
 public:
+
+	ShaderProgram();
 
 	static ShaderProgram from_sources(const std::string& vertexSrc, const std::string& fragmentSrc);
 

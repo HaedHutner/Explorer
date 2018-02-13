@@ -11,6 +11,7 @@ class SimpleRenderer : public AbstractRenderer {
 private:
 
 	std::vector<Model*> models;
+	bool wireframe;
 
 protected:
 
@@ -21,7 +22,7 @@ protected:
 
 public:
 
-	SimpleRenderer(Camera* camera, std::vector<Model*> models);
+	SimpleRenderer(Camera* camera, std::vector<Model*> models, bool wireframe );
 
 	~SimpleRenderer();
 };

@@ -24,6 +24,9 @@ Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& eleme
 
 void Mesh::draw(const ShaderProgram & shader_program)
 {
+	glBindVertexArray(vao);
+	glDrawElements(GL_TRIANGLES, elements.size(), GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
 }
 
 Mesh::~Mesh()
