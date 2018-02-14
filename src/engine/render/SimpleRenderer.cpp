@@ -25,6 +25,7 @@ void SimpleRenderer::draw(const ShaderProgram& shader)
 
 void SimpleRenderer::post(const ShaderProgram& shader)
 {
+	glDisable(GL_DEPTH_TEST);
 	if (wireframe) glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 

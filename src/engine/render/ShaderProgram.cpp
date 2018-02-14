@@ -96,9 +96,28 @@ void ShaderProgram::set_uniform_vec4(const std::string & name, const glm::vec4 &
 }
 
 void ShaderProgram::link() {
+	Vertex::bindAttribs(id());
+
 	glLinkProgram(program_id);
+
+	GLint isLinked = 0;
+	glGetProgramiv(program_id, GL_LINK_STATUS, &isLinked);
+	if (isLinked == GL_FALSE)
+	{
+		GLint maxLength = 0;
+		glGetProgramiv(program_id, GL_INFO_LOG_LENGTH, &maxLength);
+
+		std::vector<GLchar> infoLog(maxLength);
+		glGetProgramInfoLog(program_id, maxLength, &maxLength, &infoLog[0]);
+
+		glDeleteProgram(program_id);
+
+		Log::error("GLSL Program Link Error: %s", &infoLog[0]);
+
+		return;
+	}
 }
 
-void ShaderProgram::use() { glUseProgram(program_id); }
+const void ShaderProgram::use() const { glUseProgram(program_id); }
 
-GLuint ShaderProgram::id() { return program_id; }
+const GLuint ShaderProgram::id() const { return program_id; }

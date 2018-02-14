@@ -21,7 +21,8 @@ public:
 
 	AbstractRenderer(Camera* camera) : camera(camera) {}
 
-	void render(const ShaderProgram& shader) {
+	void render(ShaderProgram& shader) {
+		shader.use();
 		pre(shader);
 		draw(shader);
 		post(shader);

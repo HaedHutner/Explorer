@@ -1,8 +1,8 @@
 #version 330
 
-out vec4 final_color;
-
 in vec2 texture_coords;
+
+out vec4 final_color;
 
 uniform sampler2D textures;
 

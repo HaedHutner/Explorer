@@ -17,6 +17,8 @@ private:
 
 	GLuint vao, vbo, ebo;
 
+	void init();
+
 public:
 
 	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements);

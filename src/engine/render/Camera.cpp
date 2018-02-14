@@ -52,7 +52,7 @@ void Camera::move(MoveDirection dir, float speed) {
 		break;
 	}
 
-	Log::info("Camera: %d, %d", camera_position.x, camera_position.z);
+	//Log::info("Camera: %.6f, %.6f, %.6f", camera_position.x, camera_position.z, camera_position.y);
 }
 
 void Camera::process_key_input(GLFWwindow * window) {
@@ -117,4 +117,6 @@ void Camera::process_mouse_input(GLFWwindow * window, double x, double y) {
 
 	last_x = x;
 	last_y = y;
+
+	//Log::info("Camera Yaw & Pitch: %.6f, %.6f", yaw, pitch);
 }

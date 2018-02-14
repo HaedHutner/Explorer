@@ -17,14 +17,14 @@ private:
 	glm::fvec3 rotation;
 	glm::vec3 scale;
 
-	Mesh mesh;
+	Mesh* mesh;
 	Texture texture;
 
 public:
 
 	Model();
 
-	Model(const Mesh& mesh, const Texture& texture, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale );
+	Model(Mesh* mesh, const Texture& texture, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale );
 
 	glm::mat4 get_model_matrix();
 

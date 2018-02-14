@@ -7,6 +7,8 @@
 
 #include <string>
 
+#include <engine\render\Vertex.h>
+
 #include <util/Log.h>
 #include <util/FileUtils.hpp>
 
@@ -45,11 +47,11 @@ public:
 
 	void link();
 
-	void use();
+	const void use() const;
 
 	void clear();
 
-	GLuint id();
+	const GLuint id() const;
 };
 
 

@@ -8,20 +8,22 @@ Explorer::Explorer( const int width, const int height )
 
 void Explorer::run() {
 	test_shader = ShaderProgram::from_files("resources/simple.vert", "resources/simple.frag");
+	test_shader.link();
+
 	camera = new Camera(90.0, 1, 1, Game::width, Game::height);
 
 	glClearColor(0.5, 0.1, 0.5, 1.0);
-
-	Mesh test_mesh = Mesh(
+	
+	Mesh* test_mesh = new Mesh(
 		{
-			{ { -1.0, -1.0,  1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ {  1.0, -1.0,  1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ {  1.0,  1.0,  1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ { -1.0,  1.0,  1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ { -1.0, -1.0, -1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ {  1.0, -1.0, -1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ {  1.0,  1.0, -1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
-			{ { -1.0,  1.0, -1.0 },{ 0.0, 1.0 },{ 0.0, 0.0, 0.0 } },
+			{ { -1.0f, -1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f, -1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f,  1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ { -1.0f,  1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ { -1.0f, -1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f, -1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f,  1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ { -1.0f,  1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
 		}, 
 		{ 
 			// front
@@ -43,6 +45,7 @@ void Explorer::run() {
 			// left
 			4, 5, 1,
 			1, 0, 4,
+
 			// right
 			3, 2, 6,
 			6, 7, 3, 
@@ -60,6 +63,10 @@ void Explorer::run() {
 
 void Explorer::tick() {
 	Game::tick();
+	double x, y;
+	glfwGetCursorPos(Game::context, &x, &y);
+	camera->process_mouse_input(Game::context, x, y);
+	camera->process_key_input(Game::context);
 }
 
 void Explorer::render() {
