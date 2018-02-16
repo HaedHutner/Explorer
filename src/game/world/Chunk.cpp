@@ -14,4 +14,5 @@ void Chunk::draw()
 
 Chunk::~Chunk()
 {
+	delete model;
 }

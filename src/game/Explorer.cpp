@@ -55,7 +55,7 @@ void Explorer::run() {
 		test_texture
 	);
 
-	test = new Model(test_mesh, {0, 0, 0}, {0.0f, 0.0f, 0.0f}, {1, 1, 1});
+	test = new Model({ test_mesh }, { 0, 0, 0 }, { 0.0f, 0.0f, 0.0f }, { 1, 1, 1 });
 	
 	test_renderer = new SimpleRenderer(camera, { test }, false);
 

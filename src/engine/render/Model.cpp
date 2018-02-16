@@ -1,7 +1,7 @@
 #include "Model.h"
 
-Model::Model(Mesh* mesh, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale)
-	: mesh(mesh), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
+Model::Model(const std::vector<Mesh*>& meshes, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale)
+	: meshes(meshes), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
 {
 	moveBy(position);
 	rotateBy(rotation);
@@ -40,10 +40,14 @@ void Model::tick()
 
 void Model::draw(const ShaderProgram & shader_program)
 {
-	mesh->draw(shader_program);
+	for (Mesh* mesh : meshes) {
+		mesh->draw(shader_program);
+	}
 }
 
 Model::~Model()
 {
-	delete mesh;
+	for (Mesh* mesh : meshes) {
+		delete mesh;
+	}
 }
