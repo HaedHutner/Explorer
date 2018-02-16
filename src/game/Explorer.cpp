@@ -14,16 +14,18 @@ void Explorer::run() {
 
 	glClearColor(0.5, 0.1, 0.5, 1.0);
 	
+	Texture* test_texture = new SimpleTexture("resources/textures/Crate.bmp");
+
 	Mesh* test_mesh = new Mesh(
 		{
 			{ { -1.0f, -1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ {  1.0f, -1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ {  1.0f,  1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ { -1.0f,  1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f, -1.0f,  1.0f },{ 1.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f,  1.0f,  1.0f },{ 1.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ { -1.0f,  1.0f,  1.0f },{ 0.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
 			{ { -1.0f, -1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ {  1.0f, -1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ {  1.0f,  1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-			{ { -1.0f,  1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f, -1.0f, -1.0f },{ 1.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ {  1.0f,  1.0f, -1.0f },{ 1.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
+			{ { -1.0f,  1.0f, -1.0f },{ 0.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
 		}, 
 		{ 
 			// front
@@ -49,20 +51,21 @@ void Explorer::run() {
 			// right
 			3, 2, 6,
 			6, 7, 3, 
-		}
+		},
+		test_texture
 	);
 
-	SimpleTexture test_texture = SimpleTexture("resources/textures/test.png");
-
-	test = new Model(test_mesh, test_texture, {0, 0, 0}, {0.0f, 0.0f, 0.0f}, {1, 1, 1});
+	test = new Model(test_mesh, {0, 0, 0}, {0.0f, 0.0f, 0.0f}, {1, 1, 1});
 	
-	test_renderer = new SimpleRenderer(camera, { test }, true);
+	test_renderer = new SimpleRenderer(camera, { test }, false);
 
 	Game::run();
 }
 
 void Explorer::tick() {
 	Game::tick();
+	test->rotateBy( glm::radians(1.0f), { 1, 1, 0 });
+
 	double x, y;
 	glfwGetCursorPos(Game::context, &x, &y);
 	camera->process_mouse_input(Game::context, x, y);

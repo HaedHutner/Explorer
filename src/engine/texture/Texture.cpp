@@ -1,26 +1,27 @@
 #include "Texture.h"
+#define STB_IMAGE_IMPLEMENTATION
 
 Texture::Texture()
 {
-	glGenTextures(1, &texture_id);
+	glGenTextures(1, &tex_id);
 }
 
-GLuint Texture::id()
+GLuint Texture::texture_id() const
 {
-	return texture_id;
+	return tex_id;
 }
 
-GLsizei Texture::width()
+GLsizei Texture::width() const
 {
 	return w;
 }
 
-GLsizei Texture::height()
+GLsizei Texture::height() const
 {
 	return h;
 }
 
 Texture::~Texture()
 {
-	glDeleteTextures(1, &texture_id);
+	glDeleteTextures(1, &tex_id);
 }

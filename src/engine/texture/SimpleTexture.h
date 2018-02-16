@@ -10,6 +10,8 @@ public:
 
 	~SimpleTexture();
 
+	void bind(GLint unit) const;
+
 };
 
 #endif

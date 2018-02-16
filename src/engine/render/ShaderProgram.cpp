@@ -67,6 +67,12 @@ void ShaderProgram::clear() {
 	glDeleteShader(fragment_shader);
 }
 
+void ShaderProgram::set_uniform_texture(const std::string& name, const Texture& texture, const GLint& texture_unit) const
+{
+	texture.bind(GL_TEXTURE0 + texture_unit);
+	set_uniform_int(name, texture_unit);
+}
+
 void ShaderProgram::set_uniform_bool(const std::string & name, bool value) const {
 	glUniform1i(glGetUniformLocation(program_id, name.c_str()), (int)value);
 }

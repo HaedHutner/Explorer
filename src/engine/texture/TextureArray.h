@@ -14,6 +14,8 @@ public:
 
 	TextureArray(int width, int height, const std::vector<std::string>& texturePaths);
 
+	void bind(GLint unit) const;
+
 	~TextureArray();
 };
 

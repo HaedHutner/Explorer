@@ -8,6 +8,7 @@
 #include <string>
 
 #include <engine\render\Vertex.h>
+#include <engine\texture\Texture.h>
 
 #include <util/Log.h>
 #include <util/FileUtils.hpp>
@@ -30,6 +31,8 @@ public:
 	static ShaderProgram from_sources(const std::string& vertexSrc, const std::string& fragmentSrc);
 
 	static ShaderProgram from_files(const std::string& vertexPath, const std::string& fragmentPath);
+
+	void set_uniform_texture(const std::string& name, const Texture& texture, const GLint& texture_unit) const;
 
 	void set_uniform_bool(const std::string& name, bool value) const;
 

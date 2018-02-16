@@ -1,12 +1,7 @@
 #include "Model.h"
 
-Model::Model()
-	: mesh( new Mesh(std::vector<Vertex>(), std::vector<GLuint>()) ), texture()
-{
-}
-
-Model::Model(Mesh* mesh, const Texture & texture, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale)
-	: mesh(mesh), texture(texture), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
+Model::Model(Mesh* mesh, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale)
+	: mesh(mesh), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
 {
 	moveBy(position);
 	rotateBy(rotation);
@@ -45,7 +40,6 @@ void Model::tick()
 
 void Model::draw(const ShaderProgram & shader_program)
 {
-	shader_program.set_uniform_int("textures", texture.id());
 	mesh->draw(shader_program);
 }
 

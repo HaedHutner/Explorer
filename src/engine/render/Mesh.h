@@ -5,6 +5,7 @@
 
 #include <vector>
 
+#include <engine\texture\SimpleTexture.h>
 #include <engine\render\Vertex.h>
 #include <engine\render\ShaderProgram.h>
 
@@ -14,6 +15,7 @@ private:
 
 	std::vector<Vertex> vertices;
 	std::vector<GLuint> elements;
+	Texture* texture;
 
 	GLuint vao, vbo, ebo;
 
@@ -21,7 +23,7 @@ private:
 
 public:
 
-	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements);
+	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements, Texture* texture);
 
 	void draw( const ShaderProgram& shader_program );
 

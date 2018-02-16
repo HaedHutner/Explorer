@@ -8,6 +8,7 @@
 #include <engine\render\Vertex.h>
 #include <engine\render\Camera.h>
 
+#include <engine\texture\Texture.h>
 #include <engine\texture\TextureArray.h>
 #include <engine\texture\SimpleTexture.h>
 

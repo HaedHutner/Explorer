@@ -1,7 +1,7 @@
 #include "Mesh.h"
 
-Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements)
-	: vertices(vertices), elements(elements)
+Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements, Texture* texture)
+	: vertices(vertices), elements(elements), texture(texture)
 {
 	init();
 }
@@ -29,6 +29,7 @@ void Mesh::init() {
 
 void Mesh::draw(const ShaderProgram & shader_program)
 {
+	shader_program.set_uniform_texture("textures", *texture, 0);
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, elements.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);

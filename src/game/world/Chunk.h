@@ -6,7 +6,7 @@
 class Chunk {
 private:
 
-	Model model;
+	Model* model;
 
 public:
 

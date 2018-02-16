@@ -4,20 +4,25 @@
 #include <glad\glad.h>
 #include <stb_image.h>
 
+#include <util\Log.h>
+
+
 class Texture {
 protected:
-	GLuint texture_id;
+	GLuint tex_id;
 	GLsizei w, h;
 
 public:
 
 	Texture();
 
-	GLuint id();
+	GLuint texture_id() const;
 
-	GLsizei width();
+	GLsizei width() const;
 
-	GLsizei height();
+	GLsizei height() const;
+
+	virtual void bind(GLint unit) const = 0;
 
 	~Texture();
 
