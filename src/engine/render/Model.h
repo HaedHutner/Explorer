@@ -21,7 +21,7 @@ private:
 
 public:
 
-	Model(const std::vector<Mesh*>& meshes, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale );
+	Model(std::vector<Mesh*> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale );
 
 	glm::mat4 get_model_matrix();
 
@@ -29,7 +29,7 @@ public:
 
 	void rotateBy(const glm::fvec3& rotation);
 
-	void rotateBy(const float& amount, const glm::vec3& direction);
+	void rotateBy(float amount, const glm::vec3& direction);
 
 	void scaleBy(const glm::vec3& difference);
 

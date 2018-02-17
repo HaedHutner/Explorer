@@ -24,7 +24,7 @@ public:
 
 	virtual void bind(GLint unit) const = 0;
 
-	~Texture();
+    virtual ~Texture();
 
 };
 

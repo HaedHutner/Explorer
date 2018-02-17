@@ -34,7 +34,4 @@ void SimpleTexture::bind(GLint unit) const {
 	glBindTexture(GL_TEXTURE_2D, this->tex_id);
 }
 
-SimpleTexture::~SimpleTexture()
-{
-	glDeleteTextures(1, &this->tex_id);
-}
+SimpleTexture::~SimpleTexture() = default;

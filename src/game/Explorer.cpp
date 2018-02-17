@@ -70,6 +70,8 @@ void Explorer::tick() {
 	glfwGetCursorPos(Game::context, &x, &y);
 	camera->process_mouse_input(Game::context, x, y);
 	camera->process_key_input(Game::context);
+	glfwGetFramebufferSize(Game::context, &(Game::width), &(Game::height));
+	camera->update_projection(width, height);
 }
 
 void Explorer::render() {

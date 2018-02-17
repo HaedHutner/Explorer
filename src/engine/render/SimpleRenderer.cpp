@@ -18,7 +18,6 @@ void SimpleRenderer::pre(const ShaderProgram& shader)
 void SimpleRenderer::draw(const ShaderProgram& shader)
 {
 	for (Model* model : models) {
-		shader.set_uniform_mat4("model", model->get_model_matrix());
 		model->draw(shader);
 	}
 }

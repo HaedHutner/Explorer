@@ -42,6 +42,7 @@ bool Game::init()
 	}
 
 	glfwSetErrorCallback(glfwErrorCallback);
+	glfwSetWindowSizeCallback(context, on_screen_resize);
 
 	return true;
 }
@@ -76,4 +77,8 @@ int Game::stop()
 void Game::glfwErrorCallback(int error, const char * description)
 {
 	Log::error("GLFW Error %d: %s\n", error, description);
+}
+
+void Game::on_screen_resize(GLFWwindow *context, int width, int height) {
+    glViewport( 0, 0, width, height );
 }

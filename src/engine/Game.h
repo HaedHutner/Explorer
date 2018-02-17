@@ -33,6 +33,8 @@ public:
 
 	virtual int stop();
 
+	static void on_screen_resize(GLFWwindow* context, int width, int height);
+
 };
 
 #endif

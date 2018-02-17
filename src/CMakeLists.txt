@@ -3,6 +3,8 @@ set(
 		${SRC_DIR}/engine/Game.h
 		${SRC_DIR}/engine/Game.cpp
 		${SRC_DIR}/engine/Engine.h
+		${SRC_DIR}/engine/AABB.h
+		${SRC_DIR}/engine/AABB.cpp
 		${SRC_DIR}/engine/render/AbstractRenderer.h
 		${SRC_DIR}/engine/render/SimpleRenderer.h
 		${SRC_DIR}/engine/render/SimpleRenderer.cpp

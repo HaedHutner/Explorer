@@ -1,7 +1,9 @@
 #include "Model.h"
 
-Model::Model(const std::vector<Mesh*>& meshes, const glm::vec3& position, const glm::fvec3 rotation, const glm::vec3& scale)
-	: meshes(meshes), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
+#include <utility>
+
+Model::Model(std::vector<Mesh *> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale)
+	: meshes(std::move(meshes)), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
 {
 	moveBy(position);
 	rotateBy(rotation);
@@ -24,7 +26,7 @@ void Model::rotateBy(const glm::fvec3& rotation) {
 	if (rotation.z) rotateBy(rotation.z, glm::vec3(0, 0, 1));
 }
 
-void Model::rotateBy(const float& amount, const glm::vec3& direction)
+void Model::rotateBy(float amount, const glm::vec3& direction)
 {
 	glm::rotate(model, amount, direction);
 }
@@ -40,6 +42,7 @@ void Model::tick()
 
 void Model::draw(const ShaderProgram & shader_program)
 {
+    shader_program.set_uniform_mat4("model", model);
 	for (Mesh* mesh : meshes) {
 		mesh->draw(shader_program);
 	}

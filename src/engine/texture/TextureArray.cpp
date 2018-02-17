@@ -28,6 +28,4 @@ void TextureArray::bind(GLint unit) const {
 	glBindTexture(GL_TEXTURE_2D_ARRAY, this->tex_id);
 }
 
-TextureArray::~TextureArray() {
-	Texture::~Texture();
-}
+TextureArray::~TextureArray() = default;
