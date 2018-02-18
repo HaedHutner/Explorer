@@ -20,10 +20,10 @@ void TerrainChunk::draw(const ShaderProgram & program)
 	mesh->draw(program);
 }
 
-void TerrainChunk::split()
+void TerrainChunk::split_chunk()
 {
 	for (int i = 0; i < 4; i++) {
-		children[i] = new TerrainChunk(size);
+		children[i] = new TerrainChunk(size, min_height, max_height);
 	}
 
 	this->split = true;
@@ -34,7 +34,7 @@ bool TerrainChunk::is_split()
 	return split;
 }
 
-void TerrainChunk::join()
+void TerrainChunk::join_chunk()
 {
 }
 
