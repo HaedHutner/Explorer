@@ -23,6 +23,8 @@ private:
 
 public:
 
+	Mesh(int vert_size);
+
 	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements, Texture* texture);
 
 	void draw( const ShaderProgram& shader_program );

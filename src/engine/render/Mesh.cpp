@@ -1,5 +1,11 @@
 #include "Mesh.h"
 
+Mesh::Mesh(int vert_size) 
+	: vertices(std::vector<Vertex>(vert_size)), elements(std::vector<GLuint>()), texture(nullptr)
+{
+
+}
+
 Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements, Texture* texture)
 	: vertices(vertices), elements(elements), texture(texture)
 {

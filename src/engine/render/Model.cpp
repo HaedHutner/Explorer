@@ -2,7 +2,12 @@
 
 #include <utility>
 
-Model::Model(std::vector<Mesh *> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale)
+Model::Model()
+	: meshes(std::vector<Mesh*>()), model(glm::mat4(1.0f)), position(glm::vec3()), rotation(glm::vec3()), scale(glm::vec3())
+{
+}
+
+Model::Model(std::vector<Mesh*> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale)
 	: meshes(std::move(meshes)), model(glm::mat4(1.0f)), position(position), rotation(rotation), scale(scale)
 {
 	moveBy(position);

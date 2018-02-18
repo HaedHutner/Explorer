@@ -21,6 +21,8 @@ private:
 
 public:
 
+	Model();
+
 	Model(std::vector<Mesh*> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale );
 
 	glm::mat4 get_model_matrix();

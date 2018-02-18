@@ -3,8 +3,6 @@ set(
 		${SRC_DIR}/engine/Game.h
 		${SRC_DIR}/engine/Game.cpp
 		${SRC_DIR}/engine/Engine.h
-		${SRC_DIR}/engine/AABB.h
-		${SRC_DIR}/engine/AABB.cpp
 		${SRC_DIR}/engine/render/AbstractRenderer.h
 		${SRC_DIR}/engine/render/SimpleRenderer.h
 		${SRC_DIR}/engine/render/SimpleRenderer.cpp
@@ -25,8 +23,8 @@ set(
 		${SRC_DIR}/engine/texture/SimpleTexture.cpp
 		${SRC_DIR}/game/Explorer.h
 		${SRC_DIR}/game/Explorer.cpp
-		${SRC_DIR}/game/world/Chunk.h
-		${SRC_DIR}/game/world/Chunk.cpp
+		${SRC_DIR}/game/terrain/TerrainChunk.h
+		${SRC_DIR}/game/terrain/TerrainChunk.cpp
 		${SRC_DIR}/util/Log.h
 		${SRC_DIR}/util/FileUtils.hpp
 		${SRC_DIR}/Main.cpp
