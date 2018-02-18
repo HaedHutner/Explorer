@@ -44,6 +44,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${STB_DIR})
 target_link_libraries(${PROJECT_NAME} "stb" ${CMAKE_DL_LIBS})
 
 #FastNoiseSIMD
+set(FAST_NOISE_DIR ${LIBS}/FastNoiseSIMD/FastNoiseSIMD)
+add_subdirectory(${FAST_NOISE_DIR})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${FAST_NOISE_DIR})
+target_link_libraries(${PROJECT_NAME} "FastNoiseSIMD" ${CMAKE_DL_LIBS})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
