@@ -3,10 +3,22 @@
 
 #include <engine/Engine.h>
 
-class TerrainChunk {
+#include <game/terrain/Terrain.h>
+
+#include <game/terrain/TerrainGenerator.h>
+
+#include <util/MathUtils.hpp>
+
+class TerrainChunk : public Terrain {
+private:
+
+	TerrainGenerator* generator;
+
 	Mesh* mesh;
 
 	TerrainChunk* children[4];
+
+	glm::vec2 center;
 
 	int size;
 	float min_height;
@@ -14,11 +26,15 @@ class TerrainChunk {
 
 	bool split;
 
+	void generate_vertices( std::vector<Vertex>& vertices, std::vector<GLuint>& elements, int texture_resolution, int resolution );
+
 public:
 
-	TerrainChunk(int size, float min_height, float max_height);
+	TerrainChunk(TerrainGenerator* generator, glm::vec2 center, int size, float min_height, float max_height);
 
-	void draw(const ShaderProgram& program);
+	void tick() override;
+
+	void draw(const ShaderProgram& program) override;
 
 	void split_chunk();
 

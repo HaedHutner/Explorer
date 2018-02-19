@@ -3,22 +3,37 @@
 
 #include <engine\Game.h>
 
+#include <game\terrain\SimpleTerrain.h>
+#include <game\terrain\TerrainRenderer.h>
+
 class Explorer : public Game {
 private:
 
 	Camera * camera;
 
 	ShaderProgram test_shader;
-	Model* test = nullptr;
-	SimpleRenderer* test_renderer = nullptr;
+
+	Terrain* terrain;
+	TerrainRenderer* renderer;
 
 	void tick() override;
 
 	void render() override;
 
+	Explorer();
+
 public:
 
-	Explorer( const int width, const int height );
+	static Explorer& instance() {
+		static Explorer explorer;
+		return explorer;
+	}
+
+	Explorer(const Explorer&) = delete;
+	Explorer(Explorer&&) = delete;
+
+	void operator=(const Explorer&) = delete;
+	void operator=(Explorer&&) = delete;
 
 	void run() override;
 

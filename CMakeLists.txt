@@ -6,6 +6,9 @@ project(${PROJECT_NAME})
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 add_subdirectory(${SRC_DIR})
+
+#file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx)
+
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build)
@@ -44,11 +47,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${STB_DIR})
 target_link_libraries(${PROJECT_NAME} "stb" ${CMAKE_DL_LIBS})
 
 #FastNoiseSIMD
-set(FAST_NOISE_DIR ${LIBS}/FastNoiseSIMD/FastNoiseSIMD)
-add_subdirectory(${FAST_NOISE_DIR})
+set(FAST_NOISE_DIR ${LIBS}/FastNoise)
+add_library("fastnoise" ${FAST_NOISE_DIR}/FastNoise.h ${FAST_NOISE_DIR}/FastNoise.cpp)
 
+target_include_directories("fastnoise" PRIVATE ${FAST_NOISE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${FAST_NOISE_DIR})
-target_link_libraries(${PROJECT_NAME} "FastNoiseSIMD" ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME} "fastnoise" ${CMAKE_DL_LIBS})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)

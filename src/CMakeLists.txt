@@ -1,3 +1,5 @@
+#file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx PARENT_SCOPE)
+
 set(
 	PROJECT_SOURCES 
 		${SRC_DIR}/engine/Game.h
@@ -23,10 +25,18 @@ set(
 		${SRC_DIR}/engine/texture/SimpleTexture.cpp
 		${SRC_DIR}/game/Explorer.h
 		${SRC_DIR}/game/Explorer.cpp
-		${SRC_DIR}/game/terrain/TerrainChunk.h
-		${SRC_DIR}/game/terrain/TerrainChunk.cpp
+		${SRC_DIR}/game/terrain/Terrain.h
+		${SRC_DIR}/game/terrain/SimpleTerrain.h
+		${SRC_DIR}/game/terrain/SimpleTerrain.cpp
+		${SRC_DIR}/game/terrain/TerrainRenderer.h
+		${SRC_DIR}/game/terrain/TerrainRenderer.cpp
+		${SRC_DIR}/game/terrain/TerrainGenerator.h
+		${SRC_DIR}/game/terrain/TerrainGenerator.cpp
+		#${SRC_DIR}/game/terrain/TerrainChunk.h
+		#${SRC_DIR}/game/terrain/TerrainChunk.cpp
 		${SRC_DIR}/util/Log.h
 		${SRC_DIR}/util/FileUtils.hpp
+		${SRC_DIR}/util/MathUtils.hpp
 		${SRC_DIR}/Main.cpp
 	PARENT_SCOPE
 )

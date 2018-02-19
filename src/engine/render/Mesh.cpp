@@ -43,6 +43,8 @@ void Mesh::draw(const ShaderProgram & shader_program)
 
 Mesh::~Mesh()
 {
+	delete texture;
+
 	glDeleteBuffers(1, &ebo);
 	glDeleteBuffers(1, &vbo);
 	glDeleteVertexArrays(1, &vao);

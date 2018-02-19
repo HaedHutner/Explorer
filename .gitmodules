@@ -7,3 +7,6 @@
 [submodule "libs/stb-cmake"]
 	path = libs/stb-cmake
 	url = https://github.com/jschmidt42/stb-cmake.git
+[submodule "libs/FastNoise"]
+	path = libs/FastNoise
+	url = https://github.com/Auburns/FastNoise.git
