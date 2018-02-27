@@ -2,6 +2,7 @@
 
 ### Project ###
 build/
+cmake-build-debug/
 
 ### C++ ###
 # Prerequisites
