@@ -3,6 +3,7 @@
 
 #include <engine\Game.h>
 
+#include <game\terrain\TerrainTree.h>
 #include <game\terrain\SimpleTerrain.h>
 #include <game\terrain\TerrainRenderer.h>
 

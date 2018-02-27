@@ -10,3 +10,6 @@
 [submodule "libs/FastNoise"]
 	path = libs/FastNoise
 	url = https://github.com/Auburns/FastNoise.git
+[submodule "libs/glText"]
+	path = libs/glText
+	url = https://github.com/MrVallentin/glText.git

@@ -35,7 +35,8 @@ void Mesh::init() {
 
 void Mesh::draw(const ShaderProgram & shader_program)
 {
-	shader_program.set_uniform_texture("textures", *texture, 0);
+	if ( texture != nullptr ) shader_program.set_uniform_texture("textures", *texture, 0);
+
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, elements.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);

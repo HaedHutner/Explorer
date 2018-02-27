@@ -32,8 +32,10 @@ set(
 		${SRC_DIR}/game/terrain/TerrainRenderer.cpp
 		${SRC_DIR}/game/terrain/TerrainGenerator.h
 		${SRC_DIR}/game/terrain/TerrainGenerator.cpp
-		#${SRC_DIR}/game/terrain/TerrainChunk.h
-		#${SRC_DIR}/game/terrain/TerrainChunk.cpp
+		${SRC_DIR}/game/terrain/TerrainChunk.h
+		${SRC_DIR}/game/terrain/TerrainChunk.cpp
+		${SRC_DIR}/game/terrain/TerrainTree.h
+		${SRC_DIR}/game/terrain/TerrainTree.cpp
 		${SRC_DIR}/util/Log.h
 		${SRC_DIR}/util/FileUtils.hpp
 		${SRC_DIR}/util/MathUtils.hpp
