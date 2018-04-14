@@ -8,9 +8,11 @@ class TerrainGenerator {
 
 	FastNoise* generator;
 
+	float max_height;
+
 public:
 
-	TerrainGenerator(FastNoise* noiseGen);
+	TerrainGenerator(FastNoise* noiseGen, float max_height);
 
 	TerrainGenerator(int seed);
 

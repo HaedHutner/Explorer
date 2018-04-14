@@ -18,7 +18,7 @@ void TerrainRenderer::pre(const ShaderProgram & shader_program)
 
 void TerrainRenderer::draw(const ShaderProgram & shader_program)
 {
-	terrain->draw(shader_program);
+	terrain->draw(8, shader_program);
 }
 
 void TerrainRenderer::post(const ShaderProgram & shader_program)

@@ -25,17 +25,15 @@ set(
 		${SRC_DIR}/engine/texture/SimpleTexture.cpp
 		${SRC_DIR}/game/Explorer.h
 		${SRC_DIR}/game/Explorer.cpp
-		${SRC_DIR}/game/terrain/Terrain.h
-		${SRC_DIR}/game/terrain/SimpleTerrain.h
-		${SRC_DIR}/game/terrain/SimpleTerrain.cpp
-		${SRC_DIR}/game/terrain/TerrainRenderer.h
-		${SRC_DIR}/game/terrain/TerrainRenderer.cpp
-		${SRC_DIR}/game/terrain/TerrainGenerator.h
-		${SRC_DIR}/game/terrain/TerrainGenerator.cpp
-		${SRC_DIR}/game/terrain/TerrainChunk.h
-		${SRC_DIR}/game/terrain/TerrainChunk.cpp
-		${SRC_DIR}/game/terrain/TerrainTree.h
-		${SRC_DIR}/game/terrain/TerrainTree.cpp
+		${SRC_DIR}/game/newterrain/Terrain.h
+		${SRC_DIR}/game/newterrain/TerrainRenderer.h
+		${SRC_DIR}/game/newterrain/TerrainRenderer.cpp
+		${SRC_DIR}/game/newterrain/TerrainGenerator.h
+		${SRC_DIR}/game/newterrain/TerrainGenerator.cpp
+		${SRC_DIR}/game/newterrain/TerrainChunk.h
+		${SRC_DIR}/game/newterrain/TerrainChunk.cpp
+		${SRC_DIR}/game/newterrain/TerrainTree.h
+		${SRC_DIR}/game/newterrain/TerrainTree.cpp
 		${SRC_DIR}/util/Log.h
 		${SRC_DIR}/util/FileUtils.hpp
 		${SRC_DIR}/util/MathUtils.hpp
