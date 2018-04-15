@@ -7,6 +7,8 @@
 class TerrainTree {
 
 	class Node {
+		TerrainGenerator* generator;
+
 		Vertex nw;
 		Vertex ne;
 		Vertex se;
@@ -22,9 +24,7 @@ class TerrainTree {
 
 		Node(TerrainGenerator* generator, const glm::vec2& origin, const float& size);
 
-		void update(Mesh& mesh);
-
-		void draw(int depth, const ShaderProgram& program);
+		void update(int depth, Mesh& mesh);
 
 		Vertex& get_nw();
 
@@ -54,7 +54,7 @@ public:
 
 	TerrainTree(TerrainGenerator* generator, glm::vec2 origin, float size, int depth);
 
-	void update();
+	void update(int depth);
 
 	void draw(int depth, const ShaderProgram& program);
 

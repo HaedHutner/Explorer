@@ -54,6 +54,13 @@ void Mesh::index(GLuint index)
 	elements.push_back(index);
 }
 
+void Mesh::add_indices(const std::vector<GLuint>& indices)
+{
+	for (auto index : indices) {
+		elements.push_back(index);
+	}
+}
+
 Mesh::~Mesh()
 {
 	delete texture;

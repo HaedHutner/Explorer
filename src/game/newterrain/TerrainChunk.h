@@ -16,7 +16,7 @@ private:
 
 public:
 
-	TerrainChunk(TerrainGenerator* generator, glm::vec2 origin, float initial_depth, float size, float height);
+	TerrainChunk(TerrainGenerator* generator, glm::vec2 origin, float initial_depth, float size);
 
 	// Inherited via Terrain
 	virtual void tick() override;
