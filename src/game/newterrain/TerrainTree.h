@@ -7,15 +7,11 @@
 class TerrainTree {
 
 	class Node {
-		TerrainGenerator* generator;
-
-		glm::vec2 origin;
-		float size;
-
 		Vertex nw;
 		Vertex ne;
 		Vertex se;
 		Vertex sw;
+		Vertex center;
 
 		Node* northwest;
 		Node* northeast;
@@ -24,7 +20,9 @@ class TerrainTree {
 
 	public:
 
-		Node(TerrainGenerator* generator, glm::vec2 origin, float size);
+		Node(TerrainGenerator* generator, const glm::vec2& origin, const float& size);
+
+		void update(Mesh& mesh);
 
 		void draw(int depth, const ShaderProgram& program);
 
@@ -36,7 +34,7 @@ class TerrainTree {
 
 		Vertex& get_sw();
 
-		glm::vec2 get_center();
+		Vertex& get_center();
 
 		glm::vec2 get_origin();
 
@@ -48,11 +46,15 @@ class TerrainTree {
 
 	TerrainGenerator* generator;
 
-	Node* root;
+	Node root;
+
+	Mesh mesh;
 
 public:
 
 	TerrainTree(TerrainGenerator* generator, glm::vec2 origin, float size, int depth);
+
+	void update();
 
 	void draw(int depth, const ShaderProgram& program);
 

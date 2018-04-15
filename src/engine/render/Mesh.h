@@ -29,6 +29,10 @@ public:
 
 	void draw( const ShaderProgram& shader_program );
 
+	unsigned int vert(Vertex& vertex);
+
+	void index(GLuint index);
+
 	~Mesh();
 
 };

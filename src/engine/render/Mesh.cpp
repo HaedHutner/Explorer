@@ -1,7 +1,7 @@
 #include "Mesh.h"
 
 Mesh::Mesh(int vert_size) 
-	: vertices(std::vector<Vertex>(vert_size)), elements(std::vector<GLuint>()), texture(nullptr)
+	: vertices(std::vector<Vertex>(vert_size)), elements(std::vector<GLuint>(vert_size*6)), texture(nullptr)
 {
 
 }
@@ -40,6 +40,18 @@ void Mesh::draw(const ShaderProgram & shader_program)
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, elements.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+}
+
+unsigned int Mesh::vert(Vertex & vertex)
+{
+	unsigned int index = vertices.size();
+	vertices.push_back(vertex);
+	return index;
+}
+
+void Mesh::index(GLuint index)
+{
+	elements.push_back(index);
 }
 
 Mesh::~Mesh()
