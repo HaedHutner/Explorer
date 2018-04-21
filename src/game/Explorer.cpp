@@ -14,11 +14,11 @@ void Explorer::run() {
 
 	glClearColor(0.5, 0.1, 0.5, 1.0);
 
-	TerrainGenerator* generator = new TerrainGenerator(115231);
+	TerrainGenerator* generator = new TerrainGenerator(115231, 64.0f);
 
 	double timeBefore = glfwGetTime();
 
-	terrain = new TerrainTree(generator, new SimpleTexture("resources/none.png"), { 0, 0 }, 1024.0f, 6, 128.0f);
+	terrain = new TerrainChunk(generator, { 0, 0 }, 4, 256.0f);
 
 	double timeAfter = glfwGetTime();
 

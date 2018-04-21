@@ -145,26 +145,31 @@ void TerrainTree::Node::update(int depth, Mesh & mesh)
 Vertex & TerrainTree::Node::get_nw()
 {
 	// TODO: insert return statement here
+	return nw;
 }
 
 Vertex & TerrainTree::Node::get_ne()
 {
 	// TODO: insert return statement here
+	return ne;
 }
 
 Vertex & TerrainTree::Node::get_se()
 {
 	// TODO: insert return statement here
+	return se;
 }
 
 Vertex & TerrainTree::Node::get_sw()
 {
 	// TODO: insert return statement here
+	return sw;
 }
 
 Vertex & TerrainTree::Node::get_center()
 {
 	// TODO: insert return statement here
+	return center;
 }
 
 glm::vec2 TerrainTree::Node::get_origin()

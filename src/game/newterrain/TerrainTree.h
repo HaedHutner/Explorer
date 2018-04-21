@@ -1,8 +1,9 @@
 #ifndef _TERRAIN_TREE_H
 #define _TERRAIN_TREE_H
 
-#include <game\newterrain\Terrain.h>
-#include <game\newterrain\TerrainChunk.h>
+#include <engine\Engine.h>
+
+#include <game\newterrain\TerrainGenerator.h>
 
 class TerrainTree {
 

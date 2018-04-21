@@ -2,7 +2,6 @@
 #define _TERRAIN_H
 
 #include <engine\Engine.h>
-#include <game\terrain\TerrainGenerator.h>
 
 class Terrain {
 

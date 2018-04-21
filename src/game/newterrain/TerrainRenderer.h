@@ -3,7 +3,7 @@
 
 #include <engine\render\AbstractRenderer.h>
 
-#include <game\terrain\Terrain.h>
+#include <game\newterrain\Terrain.h>
 
 class TerrainRenderer : public AbstractRenderer {
 private:

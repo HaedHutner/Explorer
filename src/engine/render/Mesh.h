@@ -33,7 +33,7 @@ public:
 
 	void index(GLuint index);
 
-	void indices(const std::vector<GLuint>& indices);
+	void add_indices(const std::vector<GLuint>& indices);
 
 	~Mesh();
 

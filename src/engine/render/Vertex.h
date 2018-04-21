@@ -27,22 +27,26 @@ struct Vertex {
 		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(5 * sizeof(GLfloat)));
 	}
 
-	static Vertex midpoint(const Vertex& first, const Vertex& second) {
+	Vertex operator+(const Vertex& other) {
+		return { xyz + other.xyz, uv + other.uv, normal + other.normal };
+	}
+
+	Vertex operator-(const Vertex& other) {
+		return { xyz - other.xyz, uv - other.uv, normal - other.normal };
+	}
+
+	Vertex operator*(const Vertex& other) {
+		return { xyz*other.xyz, uv*other.uv, normal*other.normal };
+	}
+
+	Vertex operator*(const float& value) {
+		return { xyz*value, uv*value, normal*value };
+	}
+
+	static Vertex midpoint(Vertex& first, Vertex& second) {
 		return ( first + second ) * 0.5f;
 	}
 
 };
-
-Vertex& operator+(const Vertex& first, const Vertex& second) {
-	return { first.xyz + second.xyz, first.uv + second.uv, first.normal + second.normal };
-}
-
-Vertex& operator-(const Vertex& first, const Vertex& second) {
-	return { first.xyz - second.xyz, first.uv - second.uv, first.normal - second.normal };
-}
-
-Vertex operator*(const Vertex& vertex, const float& value) {
-	return { vertex.xyz*value, vertex.uv*value, vertex.normal*value };
-}
 
 #endif // !_VERTEX_H
