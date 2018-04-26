@@ -9,20 +9,20 @@
 
 class Texture {
 protected:
-	GLuint tex_id;
-	GLsizei w, h;
+    GLuint tex_id;
+    GLsizei w, h;
 
 public:
 
-	Texture();
+    Texture();
 
-	GLuint texture_id() const;
+    GLuint texture_id() const;
 
-	GLsizei width() const;
+    GLsizei width() const;
 
-	GLsizei height() const;
+    GLsizei height() const;
 
-	virtual void bind(GLint unit) const = 0;
+    virtual void bind(GLint unit) const = 0;
 
     virtual ~Texture();
 

@@ -2,42 +2,42 @@
 #define _EXPLORER_H
 
 #include <engine\Game.h>
-
-#include <game\newterrain\TerrainChunk.h>
-#include <game\newterrain\TerrainRenderer.h>
+#include <game/terrain/SimpleTerrainRenderer.h>
 
 class Explorer : public Game {
 private:
 
-	Camera * camera;
+    Camera *camera;
 
-	ShaderProgram test_shader;
+    ShaderProgram test_shader;
 
-	Terrain* terrain;
-	TerrainRenderer* renderer;
+    SimpleTerrain *terrain;
+    SimpleTerrainRenderer *renderer;
 
-	void tick() override;
+    void tick() override;
 
-	void render() override;
+    void render() override;
 
-	Explorer();
+    Explorer();
 
 public:
 
-	static Explorer& instance() {
-		static Explorer explorer;
-		return explorer;
-	}
+    static Explorer &instance() {
+        static Explorer explorer;
+        return explorer;
+    }
 
-	Explorer(const Explorer&) = delete;
-	Explorer(Explorer&&) = delete;
+    Explorer(const Explorer &) = delete;
 
-	void operator=(const Explorer&) = delete;
-	void operator=(Explorer&&) = delete;
+    Explorer(Explorer &&) = delete;
 
-	void run() override;
+    void operator=(const Explorer &) = delete;
 
-	~Explorer();
+    void operator=(Explorer &&) = delete;
+
+    void run() override;
+
+    ~Explorer();
 
 };
 

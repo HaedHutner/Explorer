@@ -13,29 +13,29 @@ class Mesh {
 
 private:
 
-	std::vector<Vertex> vertices;
-	std::vector<GLuint> elements;
-	Texture* texture;
+    std::vector<Vertex> vertices;
+    std::vector<GLuint> elements;
+    Texture *texture;
 
-	GLuint vao, vbo, ebo;
+    GLuint vao, vbo, ebo;
 
-	void init();
+    void init();
 
 public:
 
-	Mesh(int vert_size);
+    Mesh(int vert_size);
 
-	Mesh(const std::vector<Vertex>& vertices, const std::vector<GLuint>& elements, Texture* texture);
+    Mesh(const std::vector<Vertex> &vertices, const std::vector<GLuint> &elements, Texture *texture);
 
-	void draw( const ShaderProgram& shader_program );
+    void draw(const ShaderProgram &shader_program);
 
-	unsigned int vert(Vertex& vertex);
+    unsigned int vert(Vertex &vertex);
 
-	void index(GLuint index);
+    void index(GLuint index);
 
-	void add_indices(const std::vector<GLuint>& indices);
+    void add_indices(const std::vector<GLuint> &indices);
 
-	~Mesh();
+    ~Mesh();
 
 };
 

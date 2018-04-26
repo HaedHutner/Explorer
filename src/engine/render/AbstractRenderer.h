@@ -8,25 +8,25 @@
 class AbstractRenderer {
 
 protected:
-	
-	Camera * camera;
 
-	virtual void pre(const ShaderProgram& shader) = 0;
+    Camera *camera;
 
-	virtual void draw(const ShaderProgram& shader) = 0;
+    virtual void pre(const ShaderProgram &shader) = 0;
 
-	virtual void post(const ShaderProgram& shader) = 0;
+    virtual void draw(const ShaderProgram &shader) = 0;
+
+    virtual void post(const ShaderProgram &shader) = 0;
 
 public:
 
-	AbstractRenderer(Camera* camera) : camera(camera) {}
+    AbstractRenderer(Camera *camera) : camera(camera) {}
 
-	void render(ShaderProgram& shader) {
-		shader.use();
-		pre(shader);
-		draw(shader);
-		post(shader);
-	}
+    void render(ShaderProgram &shader) {
+        shader.use();
+        pre(shader);
+        draw(shader);
+        post(shader);
+    }
 
 };
 
