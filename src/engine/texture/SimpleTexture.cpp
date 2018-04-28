@@ -1,5 +1,7 @@
 #include "SimpleTexture.h"
 
+SimpleTexture::SimpleTexture() : Texture() {}
+
 SimpleTexture::SimpleTexture(const char *path)
         : Texture() {
     glBindTexture(GL_TEXTURE_2D, this->tex_id);
@@ -7,7 +9,7 @@ SimpleTexture::SimpleTexture(const char *path)
     int width(0), height(0), channels(3);
     unsigned char *image = stbi_load(path, &width, &height, &channels, 0);
 
-    if (NULL == image) {
+    if (nullptr == image) {
         Log::error("Failed to load texture: %s", path);
         return;
     }
@@ -27,6 +29,25 @@ SimpleTexture::SimpleTexture(const char *path)
     stbi_image_free(image);
 
 }
+
+SimpleTexture::SimpleTexture(const int &width, const int &height, const int &channels, const unsigned char *data)
+        : Texture() {
+    glBindTexture(GL_TEXTURE_2D, this->tex_id);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    this->w = width;
+    this->h = height;
+}
+
 
 void SimpleTexture::bind(GLint unit) const {
     glActiveTexture(unit);

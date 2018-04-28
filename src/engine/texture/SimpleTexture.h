@@ -6,12 +6,15 @@
 class SimpleTexture : public Texture {
 public:
 
+    SimpleTexture();
+
     SimpleTexture(const char *path);
+
+    SimpleTexture(const int &width, const int &height, const int &channels, const unsigned char *data);
 
     ~SimpleTexture();
 
     void bind(GLint unit) const;
-
 };
 
 #endif

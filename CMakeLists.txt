@@ -43,7 +43,7 @@ set(
         ${SRC_DIR}/util/FileUtils.hpp
         ${SRC_DIR}/util/MathUtils.hpp
         ${SRC_DIR}/Main.cpp
-)
+        src/engine/terrain/Heightmap.h src/engine/terrain/HeightmapRing.h src/game/terrain/SimpleHeightmap.cpp src/game/terrain/SimpleHeightmap.h src/game/terrain/SimpleHeightmapRing.cpp src/game/terrain/SimpleHeightmapRing.h)
 
 #file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx)
 
