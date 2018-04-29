@@ -1,3 +1,4 @@
+#include <game/terrain/SimpleHeightmap.h>
 #include "Explorer.h"
 
 Explorer::Explorer()
@@ -17,7 +18,9 @@ void Explorer::run() {
 
     double timeBefore = glfwGetTime();
 
-    terrain = new SimpleTerrain( {256, 256}, generator);
+    Heightmap center = SimpleHeightmap(generator, {0,0}, {256, 256});
+
+    terrain = new HeightmapTerrain(center, {});
 
     double timeAfter = glfwGetTime();
 

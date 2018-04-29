@@ -7,15 +7,18 @@
 
 
 #include <engine/terrain/Heightmap.h>
+#include <engine/terrain/HeightmapRing.h>
 #include "Terrain.h"
 #include "TerrainGenerator.h"
 
 class HeightmapTerrain : public Terrain {
 
     Heightmap center;
-    std::vector<Heightmap> rings;
+    std::vector<HeightmapRing> rings;
 
 public:
+
+    HeightmapTerrain(Heightmap heightmap, std::vector<HeightmapRing> rings);
 
     HeightmapTerrain(TerrainGenerator *generator, const glm::ivec2 &size, const float &max_height);
 

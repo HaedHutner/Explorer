@@ -7,6 +7,8 @@ class Terrain {
 
 public:
 
+    virtual void draw(const ShaderProgram &program) = 0;
+
     virtual float get_height(int x, int y) = 0;
 
     virtual float get_max_height() = 0;

@@ -4,6 +4,11 @@ SimpleTerrainRenderer::SimpleTerrainRenderer(Camera *camera, SimpleTerrain *terr
         : AbstractRenderer(camera), terrain(terrain) {
 }
 
+SimpleTerrainRenderer::SimpleTerrainRenderer(Camera *camera, HeightmapTerrain *terrain)
+        : AbstractRenderer(camera), terrain(terrain) {
+
+}
+
 void SimpleTerrainRenderer::pre(const ShaderProgram &shader_program) {
     shader_program.set_uniform_mat4("view", AbstractRenderer::camera->get_view());
     shader_program.set_uniform_mat4("projection", AbstractRenderer::camera->get_projection());

@@ -14,9 +14,10 @@ class SimpleHeightmap : public Heightmap {
     glm::vec2 origin;
     glm::ivec2 size;
 
-    GLuint vao, vbo, ebo;
+    GLuint vao;
 
-    SimpleTexture height_data;
+    GLuint tbo_height_data;
+    GLuint tex_height_data;
 
 public:
 

@@ -5,11 +5,12 @@
 
 #include <game/terrain/Terrain.h>
 #include "SimpleTerrain.h"
+#include "HeightmapTerrain.h"
 
 class SimpleTerrainRenderer : public AbstractRenderer {
 private:
 
-    SimpleTerrain *terrain;
+    Terrain *terrain;
 
     void pre(const ShaderProgram &shader_program) override;
 
@@ -20,6 +21,8 @@ private:
 public:
 
     SimpleTerrainRenderer(Camera *camera, SimpleTerrain *terrain);
+
+    SimpleTerrainRenderer(Camera *camera, HeightmapTerrain *terrain);
 
     ~SimpleTerrainRenderer();
 

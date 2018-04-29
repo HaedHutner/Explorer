@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.5)
 set(PROJECT_NAME TerrainExplorer)
 project(${PROJECT_NAME})
 
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
+
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 set(
@@ -22,6 +24,8 @@ set(
         ${SRC_DIR}/engine/render/ShaderProgram.h
         ${SRC_DIR}/engine/render/ShaderProgram.cpp
         ${SRC_DIR}/engine/render/Vertex.h
+        ${SRC_DIR}/engine/terrain/Heightmap.h
+        ${SRC_DIR}/engine/terrain/HeightmapRing.h
         ${SRC_DIR}/engine/texture/Texture.h
         ${SRC_DIR}/engine/texture/Texture.cpp
         ${SRC_DIR}/engine/texture/TextureArray.h
@@ -39,11 +43,15 @@ set(
         ${SRC_DIR}/game/terrain/SimpleTerrain.cpp
         ${SRC_DIR}/game/terrain/HeightmapTerrain.cpp
         ${SRC_DIR}/game/terrain/HeightmapTerrain.h
+        ${SRC_DIR}/game/terrain/SimpleHeightmap.cpp
+        ${SRC_DIR}/game/terrain/SimpleHeightmap.h
+        ${SRC_DIR}/game/terrain/SimpleHeightmapRing.cpp
+        ${SRC_DIR}/game/terrain/SimpleHeightmapRing.h
         ${SRC_DIR}/util/Log.h
         ${SRC_DIR}/util/FileUtils.hpp
         ${SRC_DIR}/util/MathUtils.hpp
         ${SRC_DIR}/Main.cpp
-        src/engine/terrain/Heightmap.h src/engine/terrain/HeightmapRing.h src/game/terrain/SimpleHeightmap.cpp src/game/terrain/SimpleHeightmap.h src/game/terrain/SimpleHeightmapRing.cpp src/game/terrain/SimpleHeightmapRing.h)
+)
 
 #file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx)
 

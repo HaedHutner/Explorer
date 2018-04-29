@@ -11,7 +11,7 @@ private:
 
     ShaderProgram test_shader;
 
-    SimpleTerrain *terrain;
+    HeightmapTerrain *terrain;
     SimpleTerrainRenderer *renderer;
 
     void tick() override;
