@@ -44,6 +44,10 @@ public:
 
     void set_uniform_mat4(const std::string &name, const glm::mat4 &matrix) const;
 
+    void set_uniform_ivec2(const std::string &name, const glm::ivec2 &vector) const;
+
+    void set_uniform_vec2(const std::string &name, const glm::vec2 &vector) const;
+
     void set_uniform_vec3(const std::string &name, const glm::vec3 &vector) const;
 
     void set_uniform_vec4(const std::string &name, const glm::vec4 &vector) const;

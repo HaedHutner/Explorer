@@ -1,15 +1,6 @@
 #include "HeightmapTerrain.h"
 
-HeightmapTerrain::HeightmapTerrain(Heightmap heightmap, std::vector<HeightmapRing> rings)
-        : center(heightmap), rings(rings) {
-
-}
-
 HeightmapTerrain::HeightmapTerrain(TerrainGenerator *generator, const glm::ivec2 &size, const float &max_height) {
-
-}
-
-HeightmapTerrain::HeightmapTerrain(Heightmap center, int rings_amount) {
 
 }
 
@@ -26,8 +17,15 @@ glm::vec2 HeightmapTerrain::get_size() {
 }
 
 void HeightmapTerrain::draw(const ShaderProgram &program) {
-    center.draw(program);
+    center->draw(program);
     for (auto ring : rings) {
-        ring.draw(program);
+        ring->draw(program);
+    }
+}
+
+HeightmapTerrain::~HeightmapTerrain() {
+    delete center;
+    for ( auto ring : rings ) {
+        delete ring;
     }
 }

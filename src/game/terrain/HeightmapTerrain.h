@@ -13,16 +13,12 @@
 
 class HeightmapTerrain : public Terrain {
 
-    Heightmap center;
-    std::vector<HeightmapRing> rings;
+    Heightmap* center;
+    std::vector<HeightmapRing *> rings;
 
 public:
 
-    HeightmapTerrain(Heightmap heightmap, std::vector<HeightmapRing> rings);
-
     HeightmapTerrain(TerrainGenerator *generator, const glm::ivec2 &size, const float &max_height);
-
-    HeightmapTerrain(Heightmap center, int rings_amount);
 
     float get_height(int x, int y) override;
 
@@ -30,8 +26,9 @@ public:
 
     glm::vec2 get_size() override;
 
-    void draw(const ShaderProgram &program);
+    void draw(const ShaderProgram &program) override;
 
+    ~HeightmapTerrain();
 };
 
 

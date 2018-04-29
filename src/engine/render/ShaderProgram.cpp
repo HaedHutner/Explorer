@@ -92,6 +92,14 @@ void ShaderProgram::set_uniform_mat4(const std::string &name, const glm::mat4 &m
     glUniformMatrix4fv(glGetUniformLocation(program_id, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
+void ShaderProgram::set_uniform_ivec2(const std::string &name, const glm::ivec2 &vector) const {
+    glUniform2i(glGetUniformLocation(program_id, name.c_str()), vector.x, vector.y);
+}
+
+void ShaderProgram::set_uniform_vec2(const std::string &name, const glm::vec2 &vector) const {
+    glUniform2f(glGetUniformLocation(program_id, name.c_str()), vector.x, vector.y);
+}
+
 void ShaderProgram::set_uniform_vec3(const std::string &name, const glm::vec3 &vector) const {
     glUniform3f(glGetUniformLocation(program_id, name.c_str()), vector.x, vector.y, vector.z);
 }

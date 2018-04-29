@@ -1,4 +1,3 @@
-#include <game/terrain/SimpleHeightmap.h>
 #include "Explorer.h"
 
 Explorer::Explorer()
@@ -7,7 +6,7 @@ Explorer::Explorer()
 }
 
 void Explorer::run() {
-    test_shader = ShaderProgram::from_files("resources/simple.vert", "resources/simple.frag");
+    test_shader = ShaderProgram::from_files("resources/heightmap.vert", "resources/heightmap.frag");
     test_shader.link();
 
     camera = new Camera(90.0, 5, 1, Game::width, Game::height);
@@ -18,15 +17,13 @@ void Explorer::run() {
 
     double timeBefore = glfwGetTime();
 
-    Heightmap center = SimpleHeightmap(generator, {0,0}, {256, 256});
-
-    terrain = new HeightmapTerrain(center, {});
+    terrain = new SimpleHeightmap(generator, {0,0}, {256, 256});
 
     double timeAfter = glfwGetTime();
 
     Log::info("Generating terrain took %.3f seconds.", timeAfter - timeBefore);
 
-    renderer = new SimpleTerrainRenderer(camera, terrain);
+    renderer = new HeightmapRenderer(camera, terrain);
 
     Game::run();
 }
@@ -50,6 +47,7 @@ void Explorer::render() {
 }
 
 Explorer::~Explorer() {
+    delete terrain;
     delete renderer;
     delete camera;
 }

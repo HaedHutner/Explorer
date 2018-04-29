@@ -21,7 +21,7 @@ public:
 
     AbstractRenderer(Camera *camera) : camera(camera) {}
 
-    void render(ShaderProgram &shader) {
+    virtual void render(ShaderProgram &shader) {
         shader.use();
         pre(shader);
         draw(shader);

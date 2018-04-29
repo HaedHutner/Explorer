@@ -2,7 +2,9 @@
 #define _EXPLORER_H
 
 #include <engine\Game.h>
-#include <game/terrain/SimpleTerrainRenderer.h>
+#include <game/terrain/SimpleHeightmap.h>
+#include <game/terrain/HeightmapRenderer.h>
+
 
 class Explorer : public Game {
 private:
@@ -11,8 +13,8 @@ private:
 
     ShaderProgram test_shader;
 
-    HeightmapTerrain *terrain;
-    SimpleTerrainRenderer *renderer;
+    Heightmap *terrain;
+    AbstractRenderer *renderer;
 
     void tick() override;
 

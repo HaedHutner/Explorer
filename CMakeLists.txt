@@ -51,7 +51,7 @@ set(
         ${SRC_DIR}/util/FileUtils.hpp
         ${SRC_DIR}/util/MathUtils.hpp
         ${SRC_DIR}/Main.cpp
-)
+        src/game/terrain/HeightmapRenderer.cpp src/game/terrain/HeightmapRenderer.h)
 
 #file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx)
 
