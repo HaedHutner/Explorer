@@ -2,23 +2,25 @@
 #define _TERRAIN_GENERATOR_H
 
 #include <FastNoise.h>
-#include <glm\glm.hpp>
+#include <glm/glm.hpp>
 
 class TerrainGenerator {
 
-	FastNoise* generator;
+    FastNoise *generator;
+
+    float max_height;
 
 public:
 
-	TerrainGenerator(FastNoise* noiseGen);
+    TerrainGenerator(FastNoise *noiseGen, float max_height);
 
-	TerrainGenerator(int seed);
+    TerrainGenerator(int seed, float max_height);
 
-	FN_DECIMAL get_height(const glm::vec2& coords);
+    virtual float get_height(const glm::vec2 &coords);
 
-	FN_DECIMAL get_height(FN_DECIMAL x, FN_DECIMAL y);
+    virtual float get_height(FN_DECIMAL x, FN_DECIMAL y);
 
-	~TerrainGenerator();
+    ~TerrainGenerator();
 
 };
 

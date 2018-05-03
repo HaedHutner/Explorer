@@ -9,31 +9,31 @@
 class Game {
 private:
 
-	static void glfwErrorCallback(int error, const char* description);
+    static void glfwErrorCallback(int error, const char *description);
 
 protected:
 
-	GLFWwindow * context;
+    GLFWwindow *context;
 
-	const char* name;
-	int width;
-	int height;
+    const char *name;
+    int width;
+    int height;
 
-	Game(const char* name, int width, int height);
+    Game(const char *name, int width, int height);
 
-	virtual void tick();
+    virtual void tick();
 
-	virtual void render();
+    virtual void render();
 
 public:
 
-	bool init();
+    bool init();
 
-	virtual void run();
+    virtual void run();
 
-	virtual int stop();
+    virtual int stop();
 
-	static void on_screen_resize(GLFWwindow* context, int width, int height);
+    static void on_screen_resize(GLFWwindow *context, int width, int height);
 
 };
 

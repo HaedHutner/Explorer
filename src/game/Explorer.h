@@ -2,43 +2,50 @@
 #define _EXPLORER_H
 
 #include <engine\Game.h>
+#include <game/terrain/SimpleHeightmap.h>
+#include <game/terrain/HeightmapRenderer.h>
+#include <game/terrain/SimpleTerrain.h>
+#include <game/terrain/SimpleTerrainRenderer.h>
+#include <game/terrain/QuadTerrain.h>
+#include <game/terrain/WorldRenderer.h>
+#include <game/terrain/WorldGenerator.h>
 
-#include <game\terrain\TerrainTree.h>
-#include <game\terrain\SimpleTerrain.h>
-#include <game\terrain\TerrainRenderer.h>
 
 class Explorer : public Game {
 private:
 
-	Camera * camera;
+    Camera *camera;
 
-	ShaderProgram test_shader;
+    ShaderProgram test_shader;
 
-	Terrain* terrain;
-	TerrainRenderer* renderer;
+    AbstractRenderer *renderer;
 
-	void tick() override;
+    int depth = 1;
 
-	void render() override;
+    void tick() override;
 
-	Explorer();
+    void render() override;
+
+    Explorer();
 
 public:
 
-	static Explorer& instance() {
-		static Explorer explorer;
-		return explorer;
-	}
+    static Explorer &instance() {
+        static Explorer explorer;
+        return explorer;
+    }
 
-	Explorer(const Explorer&) = delete;
-	Explorer(Explorer&&) = delete;
+    Explorer(const Explorer &) = delete;
 
-	void operator=(const Explorer&) = delete;
-	void operator=(Explorer&&) = delete;
+    Explorer(Explorer &&) = delete;
 
-	void run() override;
+    void operator=(const Explorer &) = delete;
 
-	~Explorer();
+    void operator=(Explorer &&) = delete;
+
+    void run() override;
+
+    ~Explorer();
 
 };
 

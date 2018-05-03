@@ -3,9 +3,55 @@ cmake_minimum_required(VERSION 3.5)
 set(PROJECT_NAME TerrainExplorer)
 project(${PROJECT_NAME})
 
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
+
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_subdirectory(${SRC_DIR})
+set(
+        PROJECT_SOURCES
+        ${SRC_DIR}/engine/Game.h
+        ${SRC_DIR}/engine/Game.cpp
+        ${SRC_DIR}/engine/Engine.h
+        ${SRC_DIR}/engine/render/AbstractRenderer.h
+        ${SRC_DIR}/engine/render/SimpleRenderer.h
+        ${SRC_DIR}/engine/render/SimpleRenderer.cpp
+        ${SRC_DIR}/engine/render/Camera.h
+        ${SRC_DIR}/engine/render/Camera.cpp
+        ${SRC_DIR}/engine/render/Mesh.h
+        ${SRC_DIR}/engine/render/Mesh.cpp
+        ${SRC_DIR}/engine/render/Model.h
+        ${SRC_DIR}/engine/render/Model.cpp
+        ${SRC_DIR}/engine/render/ShaderProgram.h
+        ${SRC_DIR}/engine/render/ShaderProgram.cpp
+        ${SRC_DIR}/engine/render/Vertex.h
+        ${SRC_DIR}/engine/terrain/Heightmap.h
+        ${SRC_DIR}/engine/terrain/HeightmapRing.h
+        ${SRC_DIR}/engine/texture/Texture.h
+        ${SRC_DIR}/engine/texture/Texture.cpp
+        ${SRC_DIR}/engine/texture/TextureArray.h
+        ${SRC_DIR}/engine/texture/TextureArray.cpp
+        ${SRC_DIR}/engine/texture/SimpleTexture.h
+        ${SRC_DIR}/engine/texture/SimpleTexture.cpp
+        ${SRC_DIR}/game/Explorer.h
+        ${SRC_DIR}/game/Explorer.cpp
+        ${SRC_DIR}/game/terrain/Terrain.h
+        ${SRC_DIR}/game/terrain/SimpleTerrainRenderer.h
+        ${SRC_DIR}/game/terrain/SimpleTerrainRenderer.cpp
+        ${SRC_DIR}/game/terrain/TerrainGenerator.h
+        ${SRC_DIR}/game/terrain/TerrainGenerator.cpp
+        ${SRC_DIR}/game/terrain/SimpleTerrain.h
+        ${SRC_DIR}/game/terrain/SimpleTerrain.cpp
+        ${SRC_DIR}/game/terrain/HeightmapTerrain.cpp
+        ${SRC_DIR}/game/terrain/HeightmapTerrain.h
+        ${SRC_DIR}/game/terrain/SimpleHeightmap.cpp
+        ${SRC_DIR}/game/terrain/SimpleHeightmap.h
+        ${SRC_DIR}/game/terrain/SimpleHeightmapRing.cpp
+        ${SRC_DIR}/game/terrain/SimpleHeightmapRing.h
+        ${SRC_DIR}/util/Log.h
+        ${SRC_DIR}/util/FileUtils.hpp
+        ${SRC_DIR}/util/MathUtils.hpp
+        ${SRC_DIR}/Main.cpp
+        src/game/terrain/HeightmapRenderer.cpp src/game/terrain/HeightmapRenderer.h src/game/terrain/QuadTerrain.cpp src/game/terrain/QuadTerrain.h src/game/terrain/WorldGenerator.cpp src/game/terrain/WorldGenerator.h src/game/terrain/WorldRenderer.cpp src/game/terrain/WorldRenderer.h)
 
 #file(GLOB_RECURSE PROJECT_SOURCES RELATIVE ${SRC_DIR} *.h *.hpp *.cpp *.cxx)
 

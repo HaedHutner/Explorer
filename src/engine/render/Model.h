@@ -11,35 +11,35 @@
 class Model {
 private:
 
-	glm::mat4 model;
+    glm::mat4 model;
 
-	glm::vec3 position;
-	glm::fvec3 rotation;
-	glm::vec3 scale;
+    glm::vec3 position;
+    glm::fvec3 rotation;
+    glm::vec3 scale;
 
-	std::vector<Mesh*> meshes;
+    std::vector<Mesh *> meshes;
 
 public:
 
-	Model();
+    Model();
 
-	Model(std::vector<Mesh*> meshes, const glm::vec3& position, const glm::fvec3& rotation, const glm::vec3& scale );
+    Model(std::vector<Mesh *> meshes, const glm::vec3 &position, const glm::fvec3 &rotation, const glm::vec3 &scale);
 
-	glm::mat4 get_model_matrix();
+    glm::mat4 get_model_matrix();
 
-	void moveBy(const glm::vec3& difference);
+    void moveBy(const glm::vec3 &difference);
 
-	void rotateBy(const glm::fvec3& rotation);
+    void rotateBy(const glm::fvec3 &rotation);
 
-	void rotateBy(float amount, const glm::vec3& direction);
+    void rotateBy(float amount, const glm::vec3 &direction);
 
-	void scaleBy(const glm::vec3& difference);
+    void scaleBy(const glm::vec3 &difference);
 
-	virtual void tick();
+    virtual void tick();
 
-	virtual void draw( const ShaderProgram& shader_program );
+    virtual void draw(const ShaderProgram &shader_program);
 
-	~Model();
+    ~Model();
 
 };
 

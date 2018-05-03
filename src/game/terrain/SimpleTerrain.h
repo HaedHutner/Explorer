@@ -1,26 +1,28 @@
-#ifndef _SIMPLE_TERRAIN_H
-#define _SIMPLE_TERRAIN_H
+#ifndef _SIMPLETERRAIN_H
+#define _SIMPLETERRAIN_H
 
-#include <engine\Engine.h>
 
-#include <game\terrain\Terrain.h>
-#include <game\terrain\TerrainGenerator.h>
-
-#include <util\MathUtils.hpp>
+#include "Terrain.h"
+#include "TerrainGenerator.h"
 
 class SimpleTerrain : public Terrain {
 
-	void generate_vertices(std::vector<Vertex>& vertices, std::vector<GLuint>& elements, float size, float texture_size);
+    Mesh *mesh;
 
 public:
 
-	SimpleTerrain(Texture* texture, TerrainGenerator* generator, int size);
+    SimpleTerrain(TerrainGenerator *generator, const glm::ivec2 &size);
 
-	virtual void tick() override;
+    void draw(const ShaderProgram &program);
 
-	virtual void draw(const ShaderProgram & program) override;
+    ~SimpleTerrain() override;
 
-	~SimpleTerrain() = default;
+    float get_height(int x, int y) override;
+
+    float get_max_height() override;
+
+    glm::vec2 get_size() override;
 };
 
-#endif
+
+#endif //_SIMPLETERRAIN_H

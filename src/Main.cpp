@@ -2,7 +2,7 @@
 
 int main() {
 
-	if ( Explorer::instance().init() ) Explorer::instance().run();
+    if (Explorer::instance().init()) Explorer::instance().run();
 
-	return Explorer::instance().stop();
+    return Explorer::instance().stop();
 }

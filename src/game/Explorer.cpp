@@ -1,96 +1,74 @@
 #include "Explorer.h"
 
-Explorer::Explorer( ) 
-	: Game("Explorer", 800, 600),
-	test_shader()
-{
+Explorer::Explorer()
+        : Game("Explorer", 800, 600),
+          test_shader() {
 }
 
 void Explorer::run() {
-	test_shader = ShaderProgram::from_files("resources/simple.vert", "resources/simple.frag");
-	test_shader.link();
+    test_shader = ShaderProgram::from_files("resources/simple.vert", "resources/simple.frag");
+    test_shader.link();
 
-	camera = new Camera(90.0, 5, 1, Game::width, Game::height);
+    camera = new Camera(90.0, 5, 1, Game::width, Game::height);
 
-	glClearColor(0.5, 0.1, 0.5, 1.0);
+    glClearColor(0.5, 0.1, 0.5, 1.0);
 
-	TerrainGenerator* generator = new TerrainGenerator(115231);
+//    TerrainGenerator *generator = new TerrainGenerator(115231, 64.0f);
+//
+//    double timeBefore = glfwGetTime();
+//
+//    simple_terrain = new QuadTerrain(generator, {0, 0}, 64, 8);
+//    //simple_terrain = new SimpleTerrain(generator, {512, 512});
+//    //simple_terrain = new SimpleHeightmap(generator, {0,0}, {256, 256});
+//
+//    double timeAfter = glfwGetTime();
+//
+//    //Log::info("Generating terrain took %.3f seconds.", timeAfter - timeBefore);
+//
+//    //renderer = new ChunkedTerrainRenderer(camera);
+//
+//    //renderer = new HeightmapRenderer(camera, terrain);
+//    simple_terrain_renderer = new SimpleTerrainRenderer(camera, simple_terrain);
 
-	double timeBefore = glfwGetTime();
+    renderer = new WorldRenderer( camera, new WorldGenerator(874528, 64.0f) );
 
-	terrain = new TerrainTree(generator, new SimpleTexture("resources/none.png"), { 0, 0 }, 1024.0f, 64.0f);
-
-	double timeAfter = glfwGetTime();
-
-	Log::info("Generating terrain took %.3f seconds.", timeAfter - timeBefore);
-
-	renderer = new TerrainRenderer(camera, terrain);
-
-	//Mesh* test_mesh = new Mesh(
-	//	{
-	//		{ { -1.0f, -1.0f,  1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ {  1.0f, -1.0f,  1.0f },{ 1.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ {  1.0f,  1.0f,  1.0f },{ 1.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ { -1.0f,  1.0f,  1.0f },{ 0.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ { -1.0f, -1.0f, -1.0f },{ 0.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ {  1.0f, -1.0f, -1.0f },{ 1.0f, 1.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ {  1.0f,  1.0f, -1.0f },{ 1.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
-	//		{ { -1.0f,  1.0f, -1.0f },{ 0.0f, 0.0f },{ 0.0f, 0.0f, 0.0f } },
-	//	}, 
-	//	{ 
-	//		// front
-	//		0, 1, 2,
-	//		2, 3, 0,
-	//	
-	//		// top
-	//		1, 5, 6,
-	//		6, 2, 1,
-	//	
-	//		// back
-	//		7, 6, 5,
-	//		5, 4, 7,
-	//	
-	//		// bottom
-	//		4, 0, 3,
-	//		3, 7, 4,
-	//	
-	//		// left
-	//		4, 5, 1,
-	//		1, 0, 4,
-	//
-	//		// right
-	//		3, 2, 6,
-	//		6, 7, 3, 
-	//	},
-	//	test_texture
-	//);
-
-	//test = new Model({ test_mesh }, { 0, 0, 0 }, { 0.0f, 0.0f, 0.0f }, { 1, 1, 1 });
-	
-	//test_renderer = new SimpleRenderer(camera, { test }, false);
-
-	Game::run();
+    Game::run();
 }
 
 void Explorer::tick() {
-	Game::tick();
+    Game::tick();
 
-	double x, y;
-	glfwGetCursorPos(Game::context, &x, &y);
-	camera->process_mouse_input(Game::context, x, y);
-	camera->process_key_input(Game::context);
-	glfwGetFramebufferSize(Game::context, &(Game::width), &(Game::height));
-	camera->update_projection(width, height);
+    double x, y;
+    glfwGetCursorPos(Game::context, &x, &y);
+    camera->process_mouse_input(Game::context, x, y);
+    camera->process_key_input(Game::context);
+    glfwGetFramebufferSize(Game::context, &(Game::width), &(Game::height));
+    camera->update_projection(width, height);
 
-	terrain->tick();
+//    if (glfwGetKey(Game::context, GLFW_KEY_UP) == GLFW_PRESS) {
+//        depth++;
+//        simple_terrain->set_depth(depth);
+//        Log::info("Current Depth: %d", depth);
+//    }
+//
+//    if (glfwGetKey(Game::context, GLFW_KEY_DOWN) == GLFW_PRESS) {
+//        if ( depth != 0 ) {
+//            depth--;
+//            simple_terrain->set_depth(depth);
+//        }
+//        Log::info("Current Depth: %d", depth);
+//    }
+
+    //terrain->tick();
 }
 
 void Explorer::render() {
-	Game::render();
-	renderer->render(test_shader);
+    Game::render();
+
+    renderer->render(test_shader);
 }
 
 Explorer::~Explorer() {
-	delete renderer;
-	delete camera;
+    delete renderer;
+    delete camera;
 }
