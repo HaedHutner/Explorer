@@ -4,6 +4,11 @@
 #include <engine\Game.h>
 #include <game/terrain/SimpleHeightmap.h>
 #include <game/terrain/HeightmapRenderer.h>
+#include <game/terrain/SimpleTerrain.h>
+#include <game/terrain/SimpleTerrainRenderer.h>
+#include <game/terrain/QuadTerrain.h>
+#include <game/terrain/WorldRenderer.h>
+#include <game/terrain/WorldGenerator.h>
 
 
 class Explorer : public Game {
@@ -13,8 +18,9 @@ private:
 
     ShaderProgram test_shader;
 
-    Heightmap *terrain;
     AbstractRenderer *renderer;
+
+    int depth = 1;
 
     void tick() override;
 

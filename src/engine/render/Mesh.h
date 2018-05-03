@@ -13,19 +13,20 @@ class Mesh {
 
 private:
 
-    std::vector<Vertex> vertices;
-    std::vector<GLuint> elements;
     Texture *texture;
 
+    GLuint vertices_size, elements_size;
     GLuint vao, vbo, ebo;
-
-    void init();
 
 public:
 
     Mesh(int vert_size);
 
     Mesh(const std::vector<Vertex> &vertices, const std::vector<GLuint> &elements, Texture *texture);
+
+    void set_vertices(const std::vector<Vertex> &vertices);
+
+    void set_elements(const std::vector<GLuint> &elements);
 
     void draw(const ShaderProgram &shader_program);
 

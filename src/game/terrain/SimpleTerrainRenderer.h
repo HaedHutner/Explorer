@@ -6,6 +6,7 @@
 #include <game/terrain/Terrain.h>
 #include "SimpleTerrain.h"
 #include "HeightmapTerrain.h"
+#include "QuadTerrain.h"
 
 class SimpleTerrainRenderer : public AbstractRenderer {
 private:
@@ -19,6 +20,8 @@ private:
     void post(const ShaderProgram &shader_program) override;
 
 public:
+
+    SimpleTerrainRenderer(Camera *camera, QuadTerrain *terrain);
 
     SimpleTerrainRenderer(Camera *camera, SimpleTerrain *terrain);
 

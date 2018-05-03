@@ -4,14 +4,46 @@
 
 #include "SimpleTerrain.h"
 
-SimpleTerrain::SimpleTerrain(const glm::ivec2 &size, TerrainGenerator *generator)
-        : mesh(new Mesh(size.x * size.y)) {
+SimpleTerrain::SimpleTerrain(TerrainGenerator *generator, const glm::ivec2 &size) {
+    std::vector<Vertex> vertices(size.x * size.y);
+    std::vector<GLuint> elements(size.x * size.y * 6);
+
+    int j = 5;
+    for (unsigned int y = 0; y < size.y; y++) {
+        for (unsigned int x = 0; x < size.x; x++) {
+            unsigned int i = x + size.x * y;
+
+            vertices[i] = {
+                    {
+                        x,
+                        generator->get_height({x, y}), // height
+                        y
+                    },
+                    {},
+                    {}
+            };
+
+            if ( x != size.x - 1 && y != size.y - 1) {
+
+                elements[j - 5] = i;
+                elements[j - 4] = i + 1;
+                elements[j - 3] = i + size.x;
+                elements[j - 2] = i + size.x;
+                elements[j - 1] = i + size.x + 1;
+                elements[j] = i + 1;
+
+                j += 6;
+            }
+        }
+    }
+
+    mesh = new Mesh(vertices, elements, new SimpleTexture("resources/textures/bricks.bmp"));
     // TODO: Generate vertices/elements
 }
 
 void SimpleTerrain::draw(const ShaderProgram &program) {
-    // TODO: Render mesh
-    Log::info( "Drawing SimpleTerrain" );
+    mesh->draw(program);
+    //Log::info("Drawing");
 }
 
 SimpleTerrain::~SimpleTerrain() {

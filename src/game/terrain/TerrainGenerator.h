@@ -16,9 +16,9 @@ public:
 
     TerrainGenerator(int seed, float max_height);
 
-    float get_height(const glm::vec2 &coords);
+    virtual float get_height(const glm::vec2 &coords);
 
-    float get_height(FN_DECIMAL x, FN_DECIMAL y);
+    virtual float get_height(FN_DECIMAL x, FN_DECIMAL y);
 
     ~TerrainGenerator();
 

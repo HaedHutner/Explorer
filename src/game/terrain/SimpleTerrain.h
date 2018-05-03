@@ -7,11 +7,11 @@
 
 class SimpleTerrain : public Terrain {
 
-    Mesh* mesh;
+    Mesh *mesh;
 
 public:
 
-    SimpleTerrain( const glm::ivec2& size, TerrainGenerator *generator);
+    SimpleTerrain(TerrainGenerator *generator, const glm::ivec2 &size);
 
     void draw(const ShaderProgram &program);
 
