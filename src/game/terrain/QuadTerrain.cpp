@@ -312,7 +312,7 @@ void QuadTerrain::set_depth(int depth) {
         mesh->set_vertices(vertices);
         mesh->set_elements(elements);
     } else {
-        mesh = new Mesh(vertices, elements, new SimpleTexture("resources/textures/cobblestone.png"));
+        mesh = new Mesh(vertices, elements, new SimpleTexture("resources/textures/none.png"));
     }
 
     QuadTerrain::depth = depth;

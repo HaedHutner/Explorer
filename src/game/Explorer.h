@@ -20,6 +20,9 @@ private:
 
     AbstractRenderer *renderer;
 
+    //TerrainGenerator* generator;
+    //SimpleHeightmap *heightmap;
+
     int depth = 1;
 
     void tick() override;

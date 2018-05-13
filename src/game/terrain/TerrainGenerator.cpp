@@ -6,7 +6,7 @@ TerrainGenerator::TerrainGenerator(FastNoise *noiseGen, float max_height)
 
 TerrainGenerator::TerrainGenerator(int seed, float max_height)
         : generator(new FastNoise(seed)), max_height(max_height) {
-    generator->SetNoiseType(FastNoise::NoiseType::Perlin);
+    generator->SetNoiseType(FastNoise::NoiseType::PerlinFractal);
 }
 
 float TerrainGenerator::get_height(const glm::vec2 &coords) {

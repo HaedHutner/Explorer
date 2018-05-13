@@ -12,7 +12,7 @@ uniform mat4 model;
 void main() {
     int x = position.x;
     int y = position.y;
-    float height = texelFetch( height_data, x * size.x*y );
+    float height = texelFetch( height_data, x + size.x*y );
 
 	gl_Position = projection * view * model * vec4(x, height, y, 1.0);
 }

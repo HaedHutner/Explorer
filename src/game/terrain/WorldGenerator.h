@@ -9,7 +9,7 @@
 #include "TerrainGenerator.h"
 #include "QuadTerrain.h"
 
-#define CHUNK_SIZE 64.0
+#define CHUNK_SIZE 32.0
 #define DEFAULT_DEPTH 5
 
 class WorldGenerator : public TerrainGenerator {

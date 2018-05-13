@@ -7,7 +7,7 @@
 SimpleHeightmap::SimpleHeightmap(TerrainGenerator *generator, const glm::vec2 &origin, const glm::ivec2 &size)
         : origin(origin), size(size) {
 
-    std::vector<glm::ivec2> position_data(static_cast<unsigned long long int>(size.x * size.y));
+    std::vector<glm::vec2> position_data(static_cast<unsigned long long int>(size.x * size.y));
     std::vector<GLuint> elements(static_cast<unsigned long long int>(size.x * size.y * 6));
     float height_data[size.x * size.y];
 
@@ -41,7 +41,7 @@ SimpleHeightmap::SimpleHeightmap(TerrainGenerator *generator, const glm::vec2 &o
     glBindVertexArray(vao);
 
     glEnableVertexAttribArray(0); // positions at location 0
-    glVertexAttribPointer(0, 2, GL_INT, GL_FALSE, sizeof(glm::ivec2), (void *) 0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), (void *) 0);
 
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);

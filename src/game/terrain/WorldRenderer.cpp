@@ -14,41 +14,25 @@ void WorldRenderer::pre(const ShaderProgram &shader) {
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
 
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glCullFace(GL_BACK);
 }
 
 void WorldRenderer::draw(const ShaderProgram &shader) {
     glm::ivec2 coords = generator->get_chunk_coordinates({camera->get_position().x, camera->get_position().z});
 
-    int max_depth = 5;
+    int max_depth = 4;
 
-    for ( int distance = 0; distance < max_depth; distance++ ) {
+    for ( int distance = 0; distance <= max_depth; distance++ ) {
         for ( int x = -distance; x < ( distance + 1 ); x++ ) {
             for ( int y = -distance; y < (distance + 1); y++ ) {
                 if ( abs(y) == distance || abs(x) == distance ) {
-                    generator->get_chunk_at({coords.x + x, coords.y + y}, max_depth - distance)->draw(shader);
+                    WorldGenerator::Chunk* chunk = generator->get_chunk_at({coords.x + x, coords.y + y}, max_depth - distance);
+                    chunk->draw(shader);
                 }
             }
         }
     }
-
-//    std::vector<WorldGenerator::Chunk*> chunks = {
-//        generator->get_chunk_at(coords, 4),
-//        generator->get_chunk_at(coords + glm::ivec2(1,0), 4),
-//        generator->get_chunk_at({coords.x - 1, coords.y}, 4),
-//        generator->get_chunk_at({coords.x, coords.y + 1}, 4),
-//        generator->get_chunk_at({coords.x, coords.y - 1}, 4),
-//        generator->get_chunk_at({coords.x + 1, coords.y + 1}, 4),
-//        generator->get_chunk_at({coords.x - 1, coords.y - 1}, 4),
-//        generator->get_chunk_at({coords.x + 1, coords.y - 1}, 4),
-//        generator->get_chunk_at({coords.x - 1, coords.y + 1}, 4),
-//        generator->get_chunk_at({coords.x - 2, coords.y + 1}, 3)
-//    };
-//
-//    for ( auto chunk : chunks ) {
-//        chunk->draw(shader);
-//    }
 }
 
 void WorldRenderer::post(const ShaderProgram &shader) {
